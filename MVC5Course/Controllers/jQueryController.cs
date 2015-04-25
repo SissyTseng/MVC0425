@@ -6,13 +6,12 @@ using System.Web.Mvc;
 
 namespace MVC5Course.Controllers
 {
-    public class TestController : BaseController
+    public class jQueryController :BaseController 
     {
-        public ActionResult Index()
+        // GET: jQuery
+        public ActionResult each()
         {
             return View();
         }
-
-        
     }
 }
