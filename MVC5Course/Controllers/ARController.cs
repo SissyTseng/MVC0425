@@ -38,6 +38,14 @@ namespace MVC5Course.Controllers
         }
 
 
+        public ActionResult File3(string url)
+        {
+            var wc = new WebClient();
+            var content = wc.DownloadData(url);
+
+            return File(content, "image/png");
+        }
+
         public ActionResult File4()
         {
             return File(Server.MapPath("~/Content/File1.html"), "text/html");
@@ -56,5 +64,33 @@ namespace MVC5Course.Controllers
 
             return Json(data, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult Redirect1()
+        {
+            //return Redirect("");
+            return RedirectToAction("File3",new { url = "http://pixelbuddha.net/sites/default/files/freebie-slide/freebie-slide-1426497148-1.jpg" }); 
+        }
+
+        public ActionResult Redirect2()
+        {
+            return RedirectToActionPermanent("File3", new { url = "http://pixelbuddha.net/sites/default/files/freebie-slide/freebie-slide-1426497148-1.jpg" });
+        }
+
+
+        public ActionResult HttpNotFound1()
+        {
+            return HttpNotFound();
+        }
+
+        public ActionResult HttpStatusCodeResult1()
+        {
+            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
+
+        public ActionResult HttpStatusCodeResult2()
+        {
+            return new HttpStatusCodeResult(HttpStatusCode.Created);
+        }
+
     }
 }
