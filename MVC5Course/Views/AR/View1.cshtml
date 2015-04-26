@@ -4,4 +4,14 @@
 }
 
 <h2>View1</h2>
+<button onclick="getdata()">讀取 Products 的 JSON 資料</button>
 
+<script>
+    function getdata() {
+
+        $.getJSON("/AR/Json1", null, function (data) {
+            console.log(data);
+        });
+
+    }
+</script>
