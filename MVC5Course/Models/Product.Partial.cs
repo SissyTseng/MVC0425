@@ -9,9 +9,9 @@ namespace MVC5Course.Models
     {
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (this.Price < 200)
-                yield return new ValidationResult("商品金額太低", new string[] { "Price" });
-            if(this.ProductName.Length<5)
+            //if (this.Price < 200)
+            //    yield return new ValidationResult("商品金額太低", new string[] { "Price" });
+            if (this.ProductName.Length < 5)
                 yield return new ValidationResult("商品名稱太短", new string[] { "ProductName" });
         }
     }

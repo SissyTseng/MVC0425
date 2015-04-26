@@ -14,13 +14,13 @@ namespace MVC5Course.Controllers
     {
  
         // GET: Products
-        public ActionResult Index()
+         public ActionResult Index()
         {
-            return View(db.Product.ToList());
+            return View(db.Product.Take(10));
         }
 
         // GET: Products/Details/5
-        public ActionResult Details(int? id)
+         public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -77,15 +77,23 @@ namespace MVC5Course.Controllers
         // 詳細資訊，請參閱 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductId,ProductName,Price,Active,Stock")] Product product)
+        public ActionResult Edit(int id,FormCollection item)
         {
-            if (ModelState.IsValid)
+            var product = db.Product.Find(id);
+            if (TryUpdateModel<Product>(product,new string[]{"ProductName","Price","Stock"}))
             {
-                db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(product);
+
+            //if (ModelState.IsValid)
+            //{
+            //    db.Entry(product).State = EntityState.Modified;
+            //    db.SaveChanges();
+            //    return RedirectToAction("Index");
+            //}
+            //return View(product);
         }
 
         // GET: Products/Delete/5
