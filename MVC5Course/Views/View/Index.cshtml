@@ -1,0 +1,24 @@
+﻿@{
+
+    foreach (int i in @ViewBag.num)
+    {
+       @i 
+    }
+
+    <br />
+
+    foreach (int i in @ViewBag.num)
+    {
+        @(i+" ")
+    }
+
+   
+        <ul>
+            @foreach (int i in @ViewBag.num)
+            {
+                <li>  @i </li>
+            }
+        </ul>
+    
+
+}
