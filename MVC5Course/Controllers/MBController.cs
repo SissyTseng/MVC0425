@@ -9,14 +9,15 @@ namespace MVC5Course.Controllers
 {
     public class MBController : BaseController
     {
-        // GET: MB
         public ActionResult Index()
         {
             ViewData["MyClient"] = db.Client.Find(100);
 
-            ViewData.Model= db.Product.Find(1);
+            ViewData.Model = db.Product.Find(1);
+
             return View();
         }
+
         public ActionResult TempData1()
         {
             ViewData["Message1"] = "Hello World 1";
@@ -40,12 +41,10 @@ namespace MVC5Course.Controllers
         }
 
         [HttpPost]
-        public ActionResult Simple1(string Username,string Password)
+        public ActionResult Simple1(string Username, string Password)
         {
-            return Content("Simple1:"+Username+","+Password);
+            return Content("Simple1: " + Username + ":" + Password);
         }
-
-
 
         public ActionResult Simple2()
         {
@@ -55,9 +54,8 @@ namespace MVC5Course.Controllers
         [HttpPost]
         public ActionResult Simple2(FormCollection form)
         {
-            return Content("Simple1:" + form["Username"] + "," + form["Password"]);
+            return Content("Simple2: " + form["Username"] + ":" + form["Password"]);
         }
-
 
         public ActionResult Complex1()
         {
@@ -67,9 +65,8 @@ namespace MVC5Course.Controllers
         [HttpPost]
         public ActionResult Complex1(Simple1ViewModel item)
         {
-            return Content("Complex1:" + item.Username + "," + item.Password);
+            return Content("Complex1: " + item.Username + ":" + item.Password);
         }
-
 
 
         public ActionResult Complex2()
@@ -80,7 +77,10 @@ namespace MVC5Course.Controllers
         [HttpPost]
         public ActionResult Complex2(Simple1ViewModel item1, Simple1ViewModel item2)
         {
-            return Content("Complex1:" + item1.Username + "," + item1.Password +"/"+item2.Username+","+item2.Password);
+            return Content("Complex2: "
+                 + item1.Username + ":" + item1.Password
+                 + " | "
+                 + item2.Username + ":" + item2.Password);
         }
 
         public ActionResult Complex3()
@@ -98,12 +98,21 @@ namespace MVC5Course.Controllers
 
         public ActionResult Complex4()
         {
-            var data = from p in db.Client select new Simple1ViewModel() { Username = p.FirstName, Password = p.LastName };
+            var data = from p in db.Client
+                       select new Simple1ViewModel()
+                       {
+                           Username = p.FirstName,
+                           Password = p.LastName,
+                           //Age = 18
+                       };
+
             return View(data.Take(10));
         }
+
         [HttpPost]
         public ActionResult Complex4(IList<Simple1ViewModel> item)
         {
+            // 請下中斷點檢查 item 的內容
             return Content("");
         }
 
@@ -111,15 +120,19 @@ namespace MVC5Course.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult Complex5(FormCollection form)
         {
             var item = new Simple1ViewModel();
-            if(TryUpdateModel<Simple1ViewModel>(item))
+
+            if (TryUpdateModel<Simple1ViewModel>(item))
             {
                 return RedirectToAction("Complex5");
             }
+
             return View(item);
         }
+
     }
 }
