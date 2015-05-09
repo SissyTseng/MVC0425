@@ -1,14 +1,9 @@
-﻿@model IEnumerable<MVC5Course.Models.Order>
+﻿@model IEnumerable<Order>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -23,7 +18,7 @@
         <th>
             客戶
         </th>
-        <th></th>
+        
     </tr>
 
 @foreach (var item in Model) {
@@ -44,11 +39,7 @@
             @Html.ActionLink(item.Client.FirstName, "Details", "Clients", new { id = item.Client.ClientId }, null)
 
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.OrderId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.OrderId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.OrderId })
-        </td>
+       
     </tr>
 }
 
