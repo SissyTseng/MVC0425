@@ -601,6 +601,7 @@
     <Content Include="Views\Metro\Index.cshtml" />
     <Content Include="Views\Shared\_Layout_Metro.cshtml" />
     <Content Include="Views\Metro\Task.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Client.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
