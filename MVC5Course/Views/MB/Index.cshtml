@@ -1,0 +1,12 @@
+﻿@model MVC5Course.Models.Product
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+Product Name: @Model.ProductName
+<br />
+@{ var client = ViewBag.MyClient as MVC5Course.Models.Client;}
+
+Client FirstName: @client.FirstName
