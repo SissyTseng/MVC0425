@@ -1,6 +1,11 @@
 ﻿@model IEnumerable<Client>
-
+@using PagedList;
+@using PagedList.Mvc;
 @{
+    if(IsAjax)
+    {
+        Layout = "";
+    }
     ViewBag.Title = "Index";
 }
 
@@ -63,6 +68,13 @@
 }
 
 </table>
+@{
+    var data = Model as IPagedList<Client>;
+}
+
+ 
+@Html.PagedListPager(data, (p) => Url.Action("Index", new { pageNo = p }),
+    PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing("Main"))
 <div id="loading" style="display:none"><img src="http://www.ajaxload.info/cache/19/C3/64/00/00/00/37-0.gif"></div>
 <div id="OrderListDiv">
 
