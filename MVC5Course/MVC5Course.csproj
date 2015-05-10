@@ -602,6 +602,8 @@
     <Content Include="Views\Shared\_Layout_Metro.cshtml" />
     <Content Include="Views\Metro\Task.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Client.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\GoogleMaps.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
