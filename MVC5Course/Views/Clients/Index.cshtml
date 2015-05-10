@@ -55,10 +55,15 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ClientId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ClientId }) |
+           @* @Html.ActionLink("Details", "Details", new { id=item.ClientId }) |*@
+            @Ajax.ActionLink("Details","Index","Orders", new { clientId = item.ClientId }, new AjaxOptions { UpdateTargetId = "OrderListDiv", LoadingElementId = "loading" })  |
             @Html.ActionLink("Delete", "Delete", new { id=item.ClientId })
         </td>
     </tr>
 }
 
 </table>
+<div id="loading" style="display:none"><img src="http://www.ajaxload.info/cache/19/C3/64/00/00/00/37-0.gif"></div>
+<div id="OrderListDiv">
+
+</div>

@@ -63,7 +63,7 @@ namespace MVC5Course.Controllers
 
             OccupationRepository occRepository =  RepositoryHelper.GetOccupationRepository();
         // GET: Clients/Create
-        public ActionResult Create()
+        public ActionResult Create() 
         {
 
             ViewBag.OccupationId = new SelectList(occRepository.All(), "OccupationId", "OccupationName");
