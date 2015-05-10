@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@Ajax.ActionLink("get time !!", "GetTime", new AjaxOptions {UpdateTargetId="now" })
+
+<div id="now"></div>
+
+<hr />
+@Ajax.ActionLink("get json", "GetJson", new AjaxOptions { HttpMethod="POST",OnSuccess="getResult" })
+
+<script>
+    function getResult(data) {
+        console.log(data);
+        alert(data.result);
+    }
+</script>
