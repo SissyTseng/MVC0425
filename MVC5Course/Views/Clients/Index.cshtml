@@ -57,7 +57,7 @@
             @Html.ActionLink("Edit", "Edit", new { id=item.ClientId }) |
            @* @Html.ActionLink("Details", "Details", new { id=item.ClientId }) |*@
             @Ajax.ActionLink("Details","Index","Orders", new { clientId = item.ClientId }, new AjaxOptions { UpdateTargetId = "OrderListDiv", LoadingElementId = "loading" })  |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ClientId })
+            @Ajax.ActionLink("Delete", "Delete", new { id = item.ClientId }, new AjaxOptions { Confirm="are u sure?"})
         </td>
     </tr>
 }
